@@ -79,9 +79,9 @@ const AddJobs = () => {
               className='text-lg px-3 rounded-3xl py-2 bg-emerald-200 font-semibold mt-2'
               name='category'
               id=''>
-              <option value=' web development'> Web Development</option>
-              <option value=' digital marketing'> Digital Marketing</option>
-              <option value=' graphics design'> Graphics Design</option>
+              <option value='Web Development'> Web Development</option>
+              <option value='Digital Marketing'> Digital Marketing</option>
+              <option value='Digital Marketing'> Graphics Design</option>
             </select>
           </div>
           <div>

@@ -15,7 +15,7 @@ const MyPostedJobs = () => {
     return (
         <div className="my-20 max-w-[90%] mx-auto">
             <h5 className="text-3xl text-center mb-10 md:text-4xl lg:text-5xl font-bold dark:text-white">My Job list</h5>
-            <p className="text-2xl font-bold my-3">I have post {data.length} {data.length>1 ? 'jobs' :'job'}</p>
+            <p className="text-2xl font-bold my-3">I have post {data?.length} {data?.length>1 ? 'jobs' :'job'}</p>
         <div className="grid  grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             {
                 data?.map(job=><JobCart job={job} refetch={refetch} key={job._id}></JobCart>)
