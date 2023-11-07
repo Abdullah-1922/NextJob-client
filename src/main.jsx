@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
  
  <AuthProvider>
  <QueryClientProvider client={queryClient}>
-  <div className='container mx-auto  dark:border   min-h-screen '>
+  <div className='max-w-7xl mx-auto  dark:border   min-h-screen '>
    <RouterProvider router={router}>
    </RouterProvider>
    </div>

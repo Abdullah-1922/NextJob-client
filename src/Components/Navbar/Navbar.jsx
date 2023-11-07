@@ -4,20 +4,21 @@ import { FiSun } from 'react-icons/fi';
 import { MdModeNight } from 'react-icons/md';
 import { useContext } from 'react';
 import { AuthContext } from '../../Routes/AuthProvider';
+import './Navbar.css'
 const Navbar = () => {
   const navClass =
-    'rounded-xl font-bold   bg-blue-400 hover:text-white hover:bg-blue-700 dark:bg-gray-700 dark:hover:text-black dark:hover:bg-gray-300 px-3 lg:px-4 lg:ml-3 my-1 py-1';
+    'rounded-xl font-bold   bg-blue-400 hover:text-white hover:bg-blue-700 dark:bg-gray-700 dark:hover:text-black   dark:hover:bg-gray-300 px-3 lg:px-4 lg:mx-2 my-1 py-1';
   const navLinks = (
     <>
       <NavLink to={'/'}>
         {' '}
         <li className={navClass}>Home</li>
       </NavLink>
-      <NavLink>
+      <NavLink to={'/addjobs'}>
         {' '}
         <li className={navClass}>Add job</li>
       </NavLink>
-      <NavLink>
+      <NavLink to={'/mypostedjobs'}>
         {' '}
         <li className={navClass}>My posted jobs</li>
       </NavLink>
@@ -36,7 +37,7 @@ const Navbar = () => {
   const { user,logOut } = useContext(AuthContext);
   console.log('user in navbar ', user);
   return (
-    <div className='dark:text-white bg-slate-200 dark:bg-gray-900'>
+    <div className='dark:text-white  bg-slate-200 dark:bg-gray-900'>
       <div className='navbar '>
         <div className='navbar-start'>
           <div className='dropdown'>
@@ -72,14 +73,16 @@ const Navbar = () => {
         </div>
         <button></button>
         <div className='navbar-end'>
+          
           {mode == 'light' ? (
             <MdModeNight
               className='text-3xl mx-3'
               onClick={changeTheme}></MdModeNight>
+              
           ) : (
             <FiSun className='text-3xl mx-3' onClick={changeTheme}></FiSun>
           )}
-
+         
           {user ? (
             <div className='flex flex-col '>
               <div className='flex items-center  gap-2'>
