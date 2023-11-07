@@ -1,42 +1,40 @@
-import { useContext } from "react";
-import { AuthContext } from "../Routes/AuthProvider";
 import axios from "axios";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-import {  useNavigate } from "react-router-dom";
 
-const AddJobs = () => {
-   const navigate =useNavigate()
-    const handleAddJob =e=>{
-      e.preventDefault()
-      const form =e.target || 'not given'
-      const email = user?.email || 'not given'
-      const jobTitle = form.jobTitle.value || 'not given'
-      const jobDescription = form.jobDescription.value || 'not given'
-      const category = form.category.value || 'not given'
-      const minimumPrice = form.minimumPrice.value || 'not given'
-      const maximumPrice = form.maximumPrice.value || 'not given'
-      const deadLine = form.deadLine.value || 'not given'
-        const jobData = {email,jobDescription,deadLine,jobTitle,category,minimumPrice,maximumPrice}
-        console.log(jobData);
-        axios.post(`http://localhost:5000/alljobs`,jobData)
-        .then(res=>{
-        if(res.data.insertedId){
-            Swal.fire({
-                title: "Job added!",
-                text: "Check My Posted Jobs for all jobs!",
-                icon: "success"
-              });
-              navigate('/mypostedjobs')
-        }
-        
-        })
-         }
-    const {user}=useContext(AuthContext)
-    console.log();
-  return (
-    <div className=" max-w-[90%] mx-auto my-10" >
-        <h3 className="text-3xl md:text-4xl lg:text-5xl  dark:text-white font-bold border-b-2 border-black max-w-fit mx-auto">ADD YOUR JOB</h3>
-      <form onSubmit={handleAddJob} className='border-gray-500 dark:border-white border  p-5 mb-20 my-10'>
+const UpdateJob = () => {
+    const data =useLoaderData()
+    const {email,jobDescription,deadLine,jobTitle,category,minimumPrice,maximumPrice}=data ||{}
+    console.log(data);
+    const handleUpdateJob=(e)=>{
+        e.preventDefault()
+        const form =e.target || 'not given'
+        const email = data.email || 'not given'
+        const jobTitle = form.jobTitle.value || 'not given'
+        const jobDescription = form.jobDescription.value || 'not given'
+        const category = form.category.value || 'not given'
+        const minimumPrice = form.minimumPrice.value || 'not given'
+        const maximumPrice = form.maximumPrice.value || 'not given'
+        const deadLine = form.deadLine.value || 'not given'
+          const UpdateJobData = {email,jobDescription,deadLine,jobTitle,category,minimumPrice,maximumPrice}
+          console.log(UpdateJobData);
+          axios.put(`http://localhost:5000/updatejob/${data._id}`,UpdateJobData)
+          .then(res=>{
+            console.log(res.data);
+            if(res.data.modifiedCount==1){
+                Swal.fire({
+                    title: 'JOB UPDATED!',
+                    text: 'Your Job post has been Updated!',
+                    icon: 'success',
+                  });
+            }
+          })
+    }
+    return (
+        <div>
+             <div className=" max-w-[90%] mx-auto my-10" >
+        <h3 className="text-3xl md:text-4xl lg:text-5xl  dark:text-white font-bold border-b-2 border-black max-w-fit mx-auto">Update YOUR JOB</h3>
+      <form onSubmit={handleUpdateJob} className='border-gray-500 dark:border-white border  p-5 mb-20 my-10'>
         <div className='mb-6'>
           <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
             Email address
@@ -44,7 +42,7 @@ const AddJobs = () => {
           <input
            
             readOnly
-            defaultValue={user?.email}
+            defaultValue={email} 
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             placeholder='john.doe@company.com'
             
@@ -55,6 +53,7 @@ const AddJobs = () => {
             Job Title
           </label>
           <input
+          defaultValue={jobTitle}
             type='text'
             id='job-title'
             name="jobTitle"
@@ -66,6 +65,7 @@ const AddJobs = () => {
         <div className='grid gap-6 mb-6 md:grid-cols-2'>
           <div>
             <textarea
+            defaultValue={jobDescription}
               placeholder='Job Description'
               name="jobDescription"
               className='textarea  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 textarea-bordered textarea-lg w-full max-w-xs'></textarea>
@@ -76,6 +76,7 @@ const AddJobs = () => {
               Choose your category
             </p>
             <select
+            defaultValue={category}
               className='text-lg px-3 rounded-3xl py-2 bg-emerald-200 font-semibold mt-2'
               name='category'
               id=''>
@@ -90,7 +91,7 @@ const AddJobs = () => {
             </label>
             <input
               type='number'
-             
+              defaultValue={minimumPrice}
               name="minimumPrice"
               className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               placeholder=''
@@ -102,8 +103,8 @@ const AddJobs = () => {
               Maximum price
             </label>
             <input
+            defaultValue={maximumPrice}
               type='number'
-             
               name="maximumPrice"
               className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               placeholder=''
@@ -117,6 +118,7 @@ const AddJobs = () => {
             <input
               type='date'
               name="deadLine"
+              defaultValue={deadLine}
               
               className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               placeholder=''
@@ -129,12 +131,13 @@ const AddJobs = () => {
           <button
             type='submit'
             className='text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
-            ADD JOB
+            Update Card
           </button>
         </div>
       </form>
     </div>
-  );
+        </div>
+    );
 };
 
-export default AddJobs;
+export default UpdateJob;

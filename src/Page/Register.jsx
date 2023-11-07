@@ -3,7 +3,7 @@ import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../Routes/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BiShow } from "react-icons/bi";
 
@@ -12,7 +12,8 @@ const Register = () => {
 const {createUser ,googleLog}=useContext(AuthContext)
 console.log(createUser);
 
-
+const location = useLocation();
+const navigate =useNavigate()
 
     const [showPass,setShowPass]=useState(false)
     const handleSubmit = (e) => {
@@ -84,8 +85,10 @@ console.log(createUser);
           });
       };
       const handleGoogleLogin=()=>{
-        googleLog()
-      }
+        googleLog().then(res=> {
+          console.log(res);
+          navigate(location?.state ? location?.state : '/')
+        })      }
     return (
         <div>
              <div className="my-10">

@@ -26,11 +26,8 @@ const AuthProvider = ({children}) => {
          return ()=> unSubscribe()
      },[])
      const googleProvider =new GoogleAuthProvider()
-     const googleLog=()=>{
+     const googleLog=async()=>{
      return  signInWithPopup(auth,googleProvider)
-         .then(result=>{
-          console.log(result);
-         })
          .catch(error=>console.log(error))
      }
      const logOut =()=>{

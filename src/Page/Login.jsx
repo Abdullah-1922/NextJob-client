@@ -10,9 +10,10 @@ import "react-toastify/dist/ReactToastify.css" // this is very Important.
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
     const { signIn ,googleLog} = useContext(AuthContext);
-    const navigate = useNavigate();
+     
     const location = useLocation();
-   
+    const navigate =useNavigate()
+   console.log(location.state);
     const handleSubmit = (e) => {
       e.preventDefault();
       const email = e.target.email.value;
@@ -56,7 +57,9 @@ const Login = () => {
             progress: undefined,
             theme: 'light',
           });
-          navigate(location?.state ? location.state : '/');
+          
+            navigate(location?.state ? location?.state : '/')
+          
         })
         .catch((err) => {
           console.log(err);
@@ -75,6 +78,12 @@ const Login = () => {
     };
     const handleGoogleLogin =()=>{
       googleLog()
+      .then(res=> {
+        console.log(res);
+        navigate(location?.state ? location?.state : '/')
+      })
+      
+     
     } 
    
     
