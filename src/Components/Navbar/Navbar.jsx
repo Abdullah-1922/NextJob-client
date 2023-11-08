@@ -26,7 +26,7 @@ const Navbar = () => {
         {' '}
         <li className={navClass}>My Bids</li>
       </NavLink>
-      <NavLink>
+      <NavLink to={'/bidrequest'}>
         {' '}
         <li className={navClass}>Bids Request</li>
       </NavLink>
