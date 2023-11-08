@@ -3,6 +3,7 @@ import { AuthContext } from "../Routes/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {  useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddJobs = () => {
    const navigate =useNavigate()
@@ -35,6 +36,11 @@ const AddJobs = () => {
     console.log();
   return (
     <div className=" max-w-[90%] mx-auto my-10" >
+      <Helmet>
+                <title>
+                  NextJob || ADD JOB
+                </title>
+              </Helmet>
         <h3 className="text-3xl md:text-4xl lg:text-5xl  dark:text-white font-bold border-b-2 border-black max-w-fit mx-auto">ADD YOUR JOB</h3>
       <form onSubmit={handleAddJob} className='border-gray-500 dark:border-white border  p-5 mb-20 my-10'>
         <div className='mb-6'>

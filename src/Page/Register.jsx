@@ -6,6 +6,7 @@ import { AuthContext } from "../Routes/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BiShow } from "react-icons/bi";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     
@@ -91,6 +92,11 @@ const navigate =useNavigate()
         })      }
     return (
         <div>
+          <Helmet>
+                <title>
+                  NextJob || Register
+                </title>
+              </Helmet>
              <div className="my-10">
          
 

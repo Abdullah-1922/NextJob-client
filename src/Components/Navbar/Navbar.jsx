@@ -37,7 +37,7 @@ const Navbar = () => {
   const { user,logOut } = useContext(AuthContext);
   console.log('user in navbar ', user);
   return (
-    <div className='dark:text-white  bg-slate-200 dark:bg-gray-900'>
+    <div className='dark:text-white h-[88px]  bg-slate-200 dark:bg-gray-900'>
       <div className='navbar '>
         <div className='navbar-start'>
           <div className='dropdown'>

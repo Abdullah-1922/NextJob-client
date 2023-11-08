@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BiShow } from 'react-icons/bi';
 import { FcGoogle } from "react-icons/fc";
 import "react-toastify/dist/ReactToastify.css" // this is very Important.
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
@@ -90,6 +91,11 @@ const Login = () => {
     return (
        
             <div className='my-10 '>
+              <Helmet>
+                <title>
+                  NextJob || Login
+                </title>
+              </Helmet>
       <div className=' py-10 px-3 md:p-10  dark:border flex justify-center w-fit mx-auto p-10 rounded-3xl bg-gradient-to-t from-green-200 via-cyan-200 to-blue-300   dark:from-slate-800 dark:via-slate-800 dark:to-slate-800'>
         <div className='relative flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none'>
           <h4 className='block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900  dark:text-white  antialiased'>

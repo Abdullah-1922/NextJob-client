@@ -9,7 +9,7 @@ const useCategoryJobs = (category) => {
         queryKey:['categoryData'],
         queryFn:async()=>{
             const data =await axios.get(`http://localhost:5000/myJobs?category=${category}`)
-            return data.data
+            return await data.data
         }
     
     })

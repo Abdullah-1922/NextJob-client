@@ -49,7 +49,7 @@ const JobCart = ({ job, refetch }) => {
         <p>Email : {email} </p>
         <p className='font-bold'>Job Title : {jobTitle} </p>
         <p className='overflow-x-hidden'>
-          Description : {jobDescription.slice(0, 50)}
+          Description : {jobDescription}
         </p>
         <div>
           Price range : {minimumPrice}$ - {maximumPrice}$

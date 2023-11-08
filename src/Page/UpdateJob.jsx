@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateJob = () => {
     const data =useLoaderData()
+    const navigate =useNavigate()
     const {email,jobDescription,deadLine,jobTitle,category,minimumPrice,maximumPrice}=data ||{}
     console.log(data);
     const handleUpdateJob=(e)=>{
@@ -27,11 +29,17 @@ const UpdateJob = () => {
                     text: 'Your Job post has been Updated!',
                     icon: 'success',
                   });
+              navigate('/mypostedjobs')
             }
           })
     }
     return (
         <div>
+          <Helmet>
+                <title>
+                  NextJob || UPDATE JOB
+                </title>
+              </Helmet>
              <div className=" max-w-[90%] mx-auto my-10" >
         <h3 className="text-3xl md:text-4xl lg:text-5xl  dark:text-white font-bold border-b-2 border-black max-w-fit mx-auto">Update YOUR JOB</h3>
       <form onSubmit={handleUpdateJob} className='border-gray-500 dark:border-white border  p-5 mb-20 my-10'>
@@ -80,9 +88,9 @@ const UpdateJob = () => {
               className='text-lg px-3 rounded-3xl py-2 bg-emerald-200 font-semibold mt-2'
               name='category'
               id=''>
-              <option value=' web development'> Web Development</option>
-              <option value=' digital marketing'> Digital Marketing</option>
-              <option value=' graphics design'> Graphics Design</option>
+              <option value='Web Development'> Web Development</option>
+              <option value='Digital Marketing'> Digital Marketing</option>
+              <option value='Graphics Design'> Graphics Design</option>
             </select>
           </div>
           <div>
