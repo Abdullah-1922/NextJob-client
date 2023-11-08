@@ -46,7 +46,7 @@ const BidRequest = () => {
                                   {bid.jobTitle}
                                </th>
                                <td className="px-6 py-4">
-                                   {bid.email}
+                                   {bid.bidEmail}
                                </td>
                                <td className="px-6 py-4">
                                    {bid.bidDeadLine}
@@ -55,7 +55,11 @@ const BidRequest = () => {
                                    {bid.bidPrice}$
                                </td>
                                <td className="px-6 py-4 text-right">
-                                   <button  className="font-medium btn text-blue-600 dark:text-blue-500 hover:underline">Complete</button>
+                                <div>
+                                    <button  className="font-medium btn text-blue-600 dark:text-blue-500 hover:underline">Accept</button>
+                                    <button  className="font-medium btn text-blue-600 dark:text-blue-500 hover:underline">Reject</button>
+                                    </div>
+                                   
                                </td>
                            </tr>
                           

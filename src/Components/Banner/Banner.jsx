@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import './Banner.css'
 const Banner = () => {
   return (
@@ -5,7 +6,7 @@ const Banner = () => {
       <div
         className='hero min-h-screen bannerBg'
        >
-        <div className='hero-overlay bg-opacity-70'></div>
+        <div className='hero-overlay bg-opacity-10'></div>
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
   <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
     
@@ -19,16 +20,9 @@ const Banner = () => {
       NextJob
     </h1>
     <p className="mb-8 leading-relaxed">
-    Opportunities await in web development, digital marketing, and graphics design. Our collaborative environment fosters innovation, ensuring you stay ahead in your field. Make an impact and shape the digital future. Ready to take the next step in your career? Explore job opportunities at NextJob today!"
+    Opportunities await in web development, digital marketing, and graphics design. Our collaborative environment fosters innovation, ensuring you stay ahead in your field. Make an impact and shape the digital future. Ready to take the next step in your career? Explore job opportunities at NextJob today!
     </p>
-    {/* <div className="flex justify-center">
-      <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-        Button
-      </button>
-      <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
-        Button
-      </button>
-    </div> */}
+   
   </div>
 </div>
 

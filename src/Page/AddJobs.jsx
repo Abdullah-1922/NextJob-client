@@ -74,7 +74,7 @@ const AddJobs = () => {
             <textarea
               placeholder='Job Description'
               name="jobDescription"
-              className='textarea  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 textarea-bordered textarea-lg w-full max-w-xs'></textarea>
+              className='textarea dark:text-white  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 textarea-bordered textarea-lg w-full max-w-xs'></textarea>
           </div>
 
           <div>
@@ -87,7 +87,7 @@ const AddJobs = () => {
               id=''>
               <option value='Web Development'> Web Development</option>
               <option value='Digital Marketing'> Digital Marketing</option>
-              <option value='Digital Marketing'> Graphics Design</option>
+              <option value='Graphics Design'> Graphics Design</option>
             </select>
           </div>
           <div>

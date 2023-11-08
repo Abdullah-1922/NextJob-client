@@ -33,13 +33,18 @@ const BidDetails = () => {
                 icon: "error"
               });
         }
-        if( moment(bidDeadLine).format('YYYY MM D') > moment(deadLine ).format('YYYY MM D') ||  moment().format('YYYY MM D') < moment( bidDeadLine).format('YYYY MM D')){
-            return Swal.fire({
-                title: "Please check the Dateline.!",
-                text: "You can not bid this deadline!",
-                icon: "error"
-              });
+        if (!
+          moment(bidDeadLine, 'YYYY MM D').isBefore(moment(deadLine, 'YYYY MM D')) &&
+          moment(bidDeadLine, 'YYYY MM D').isAfter(moment(), 'YYYY MM D')
+        ) {
+          return Swal.fire({
+            title: "Please check the Deadline!",
+            text: "You cannot bid on this deadline.",
+            icon: "error"
+          });
         }
+        
+        
         const bidData ={bidPrice,bidDeadLine,bidEmail,email,jobTitle}
          axios.post('http://localhost:5000/bidjobs',bidData)
          .then(res=>{
@@ -77,7 +82,7 @@ const BidDetails = () => {
         </div>
       </div>
       <div className="flex-1 w-[90%] mx-auto" >
-        <h3 className="text-4xl text-center font-semibold">MAKE YOUR BIDS</h3>
+        <h3 className="text-4xl text-center dark:text-white font-semibold">MAKE YOUR BIDS</h3>
       <form  onSubmit={handleBidData} className='border-gray-500 dark:border-white border  p-5 mb-20 my-10'>
       <div className='mb-6'>
           <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
@@ -138,7 +143,7 @@ const BidDetails = () => {
         <div className="mx-auto text-center">
         <button 
            
-           className='group  rounded bg-gradient-to-t from-green-200 via-cyan-200 to-blue-300 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75'
+           className='group dark:text-white  rounded bg-gradient-to-t from-green-200 via-cyan-200 to-blue-300 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75'
            href='/download'>
            <span className='block dark:hover:text-black rounded-sm dark:bg-slate-600 bg-white px-8 py-3 text-sm font-medium group-hover:bg-transparent'>
              BID JOB
