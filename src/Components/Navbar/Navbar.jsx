@@ -22,7 +22,7 @@ const Navbar = () => {
         {' '}
         <li className={navClass}>My posted jobs</li>
       </NavLink>
-      <NavLink>
+      <NavLink to={'/mybids'}>
         {' '}
         <li className={navClass}>My Bids</li>
       </NavLink>

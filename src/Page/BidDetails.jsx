@@ -1,14 +1,17 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import {  useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Routes/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
-
+import moment from 'moment';
+moment().format();
 const BidDetails = () => {
     const data =useLoaderData()
    
     const {email,jobDescription,deadLine,jobTitle,category,minimumPrice,maximumPrice}=data
     const {user}=useContext(AuthContext)
+    const navigate =useNavigate()
+   
     const handleBidData =(e)=>{
         e.preventDefault()
         const form =e.target
@@ -30,7 +33,7 @@ const BidDetails = () => {
                 icon: "error"
               });
         }
-        if(bidDeadLine<deadLine){
+        if( moment(bidDeadLine).format('YYYY MM D') > moment(deadLine ).format('YYYY MM D') ||  moment().format('YYYY MM D') < moment( bidDeadLine).format('YYYY MM D')){
             return Swal.fire({
                 title: "Please check the Dateline.!",
                 text: "You can not bid this deadline!",
@@ -41,6 +44,14 @@ const BidDetails = () => {
          axios.post('http://localhost:5000/bidjobs',bidData)
          .then(res=>{
             console.log(res.data);
+            if(res.data.insertedId ){
+               Swal.fire({
+                title: "Bid Placed!",
+                text: "You have successfully placed your bid!",
+                icon: "success"
+              })
+              navigate('/mybids')
+            }
          })
        
     }

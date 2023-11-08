@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 
 import { Helmet } from "react-helmet-async";
 import useMyJobs from "../Hooks/useMyJobs";
