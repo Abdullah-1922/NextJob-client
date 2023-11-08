@@ -20,7 +20,7 @@ const UpdateJob = () => {
         const deadLine = form.deadLine.value || 'not given'
           const UpdateJobData = {email,jobDescription,deadLine,jobTitle,category,minimumPrice,maximumPrice}
           console.log(UpdateJobData);
-          axios.put(`http://localhost:5000/updatejob/${data._id}`,UpdateJobData)
+          axios.put(`https://assignment-11-server-roan.vercel.app/updatejob/${data._id}`,UpdateJobData)
           .then(res=>{
             console.log(res.data);
             if(res.data.modifiedCount==1){
@@ -76,7 +76,7 @@ const UpdateJob = () => {
             defaultValue={jobDescription}
               placeholder='Job Description'
               name="jobDescription"
-              className='textarea  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 textarea-bordered textarea-lg w-full max-w-xs'></textarea>
+              className='textarea dark:text-white  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 textarea-bordered textarea-lg w-full max-w-xs'></textarea>
           </div>
 
           <div>

@@ -26,7 +26,10 @@ const MyBids = () => {
                                    Price
                                </th>
                                <th scope="col" className="px-6 py-3">
-                                   <span className="sr-only">Edit</span>
+                                   Status
+                               </th>
+                               <th scope="col" className="px-6 py-3">
+                                   <span className="sr-only">Action</span>
                                </th>
                            </tr>
                        </thead>
@@ -48,6 +51,9 @@ const MyBids = () => {
                                </td>
                                <td className="px-6 py-4">
                                    {bid.bidPrice}$
+                               </td>
+                               <td className="px-6 py-4">
+                                   {bid?.status ? bid.status : 'Pending'}
                                </td>
                                <td className="px-6 py-4 text-right">
                                    <button  className="font-medium btn text-blue-600 dark:text-blue-500 hover:underline">Complete</button>

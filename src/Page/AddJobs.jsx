@@ -19,7 +19,7 @@ const AddJobs = () => {
       const deadLine = form.deadLine.value || 'not given'
         const jobData = {email,jobDescription,deadLine,jobTitle,category,minimumPrice,maximumPrice}
         console.log(jobData);
-        axios.post(`http://localhost:5000/alljobs`,jobData)
+        axios.post(`https://assignment-11-server-roan.vercel.app/alljobs`,jobData)
         .then(res=>{
         if(res.data.insertedId){
             Swal.fire({

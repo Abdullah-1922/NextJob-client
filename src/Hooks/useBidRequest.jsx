@@ -10,7 +10,7 @@ const useBidRequest = () => {
     const{data ,isLoading,refetch ,isFetching}=useQuery({
         queryKey:['bitREquests'],
         queryFn:async()=>{
-            const data =await axios.get(`http://localhost:5000/bidjobsown?email=${user?.email}`)
+            const data =await axios.get(`https://assignment-11-server-roan.vercel.app/bidjobsown?email=${user?.email}`)
             return data.data
         }
     

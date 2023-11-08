@@ -46,7 +46,7 @@ const BidDetails = () => {
         
         
         const bidData ={bidPrice,bidDeadLine,bidEmail,email,jobTitle}
-         axios.post('http://localhost:5000/bidjobs',bidData)
+         axios.post('https://assignment-11-server-roan.vercel.app/bidjobs',bidData)
          .then(res=>{
             console.log(res.data);
             if(res.data.insertedId ){

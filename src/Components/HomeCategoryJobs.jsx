@@ -15,7 +15,7 @@ const HomeCategoryJobs = () => {
         }
         useEffect(()=>{
           
-            fetch(`http://localhost:5000/alljob?category=${category}`)
+            fetch(`https://assignment-11-server-roan.vercel.app/alljob?category=${category}`)
           .then(res=>res.json())
           .then(data=>setCategoryData(data))
         },[category])

@@ -41,12 +41,12 @@ const router =createBrowserRouter([
             {
                 path:'/updatejob/:id',
                 element:<PrivateRoute><UpdateJob></UpdateJob></PrivateRoute> ,
-                loader:({params})=>fetch(`http://localhost:5000/updatejob/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-11-server-roan.vercel.app/updatejob/${params.id}`)
             },
             {
                 path:'/bidjob/:id',
                 element:<PrivateRoute><BidDetails></BidDetails></PrivateRoute> ,
-                loader:({params})=>fetch(`http://localhost:5000/jobdetails/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-11-server-roan.vercel.app/jobdetails/${params.id}`)
             },
             {
                 path:'/mybids',

@@ -25,7 +25,7 @@ const JobCart = ({ job, refetch }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/alljobs/${id}`).then((res) => {
+        axios.delete(`https://assignment-11-server-roan.vercel.app/alljobs/${id}`).then((res) => {
           if (res.data.deletedCount == 1) {
             Swal.fire({
               title: 'Good job!',
@@ -43,18 +43,18 @@ const JobCart = ({ job, refetch }) => {
     <div>
       <div
         className='p-5 py-10 mx-auto rounded-3xl min-w-[320px] max-w-[400px] bg-gradient-to-t from-green-200 via-cyan-200 to-blue-300
-            dark:from-slate-800 space-y-2 font-semibold dark:via-slate-800 dark:to-slate-800  dark:text-white
+            dark:from-slate-800 space-y-2  dark:via-slate-800 dark:to-slate-800  dark:text-white
             '>
         <p className='text-xl mb-4 font-bold'> Category : {category} </p>
-        <p>Email : {email} </p>
+        <p><span  className='font-semibold'> Email</span> : {email} </p>
         <p className='font-bold'>Job Title : {jobTitle} </p>
         <p className='overflow-x-hidden'>
-          Description : {jobDescription}
+         <span className='font-semibold'> Description </span>: {jobDescription}
         </p>
         <div>
-          Price range : {minimumPrice}$ - {maximumPrice}$
+         <span  className='font-semibold'>Price Range</span> : {minimumPrice}$ - {maximumPrice}$
         </div>
-        <p>Dead Line: {deadLine}</p>
+        <p><span  className='font-semibold'>Dead Line</span>: {deadLine}</p>
         <div className='flex gap-4 mx-auto pt-5  justify-center'>
           <Link to={`/updatejob/${job._id}`}>
             <button

@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unknown-property */
+import axios from "axios";
 import useBidRequest from "../Hooks/useBidRequest";
 
 const BidRequest = () => {
@@ -8,7 +9,26 @@ const BidRequest = () => {
    refetch()
    }
    
-  
+   const handleAccept =(id)=>{
+   
+    axios.patch(`https://assignment-11-server-roan.vercel.app/status/${id}`,{status:'confirm'})
+    .than(res=>{
+        if(res.data.modifiedCount > 0){
+            refetch()
+        }
+    })
+    
+   }
+   const handleRejected =(id)=>{
+   
+    axios.patch(`https://assignment-11-server-roan.vercel.app/status/${id}`,{status:'Rejected'})
+    .than(res=>{
+        if(res.data.modifiedCount > 0){
+            refetch()
+        }
+    })
+    
+   }
     return (
         <div className="my-10">
              
@@ -31,7 +51,10 @@ const BidRequest = () => {
                                    Price
                                </th>
                                <th scope="col" className="px-6 py-3">
-                                   <span className="sr-only">Edit</span>
+                                   Status
+                               </th>
+                               <th scope="col" className="px-6 py-3">
+                                   <span className="sr-only">Action</span>
                                </th>
                            </tr>
                        </thead>
@@ -54,11 +77,16 @@ const BidRequest = () => {
                                <td className="px-6 py-4">
                                    {bid.bidPrice}$
                                </td>
+                               <td className="px-6 py-4">
+                                   {bid?.status ?  bid.status : 'pending'}
+                               </td>
                                <td className="px-6 py-4 text-right">
-                                <div>
-                                    <button  className="font-medium btn text-blue-600 dark:text-blue-500 hover:underline">Accept</button>
-                                    <button  className="font-medium btn text-blue-600 dark:text-blue-500 hover:underline">Reject</button>
+                                {
+                                    bid?.status ? '' :  <div>
+                                    <button onClick={()=>handleAccept(bid._id)}  className="font-medium btn text-blue-600 dark:text-blue-500 hover:underline">Accept</button>
+                                    <button onClick={()=>handleRejected(bid._id)} className="font-medium btn text-blue-600 dark:text-blue-500 hover:underline">Reject</button>
                                     </div>
+                                }
                                    
                                </td>
                            </tr>
